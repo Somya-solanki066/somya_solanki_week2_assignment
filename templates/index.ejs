@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Blog Posts</title>
+</head>
+<body style="background-image: url('/static/bg.jpeg'); background-size: cover; height: 100vh;">
+    <h1>Blog Posts</h1>
+    <button onclick="window.location.href='/new_post'">Create New Blog</button>
+
+    <div id="posts">
+        <% posts.forEach(post => { %>
+        
+            <div class="post">
+                <h2><%= post.title %></h2>
+                <p><%= post.content %></p>
+                <p><em>Created at: <%= post.created_at %></em></p>
+                <button onclick="window.location.href='/edit_post/<%= post.id %>'">Edit</button>
+                <button onclick="deletePost('<%= post.id %>')">Delete</button>
+
+            </div>
+        <% }) %>
+    </div>
+
+    <script src="/static/scripts.js"></script>
+
+</body>
+</html>
